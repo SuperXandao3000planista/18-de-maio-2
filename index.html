@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>18 de Maio — Maio Laranja</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #E8610A;
+      --orange-light: #FF8C38;
+      --orange-pale: #FFF0E0;
+      --cream: #FBF7F2;
+      --dark: #1A0E05;
+      --mid: #5A3A20;
+      --accent: #F5C842;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    .hero-bg-rings {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(232,97,10,0.15);
+      animation: pulse-ring 4s ease-in-out infinite;
+    }
+    .ring:nth-child(1) { width: 200px; height: 200px; border-color: rgba(232,97,10,0.5); }
+    .ring:nth-child(2) { width: 380px; height: 380px; animation-delay: .5s; }
+    .ring:nth-child(3) { width: 560px; height: 560px; animation-delay: 1s; }
+    .ring:nth-child(4) { width: 760px; height: 760px; animation-delay: 1.5s; }
+    .ring:nth-child(5) { width: 980px; height: 980px; animation-delay: 2s; }
+    .ring:nth-child(6) { width: 1200px; height: 1200px; animation-delay: 2.5s; border-color: rgba(232,97,10,0.04); }
+
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50%       { opacity: 1;   transform: scale(1.02); }
+    }
+
+    .hero-badge {
+      background: var(--orange);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: .35rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      animation: fade-up .8s ease both;
+    }
+
+    .hero-date {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(5rem, 22vw, 16rem);
+      font-weight: 900;
+      line-height: .85;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--orange);
+      letter-spacing: -.02em;
+      text-align: center;
+      animation: fade-up .9s .1s ease both;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-date span {
+      display: block;
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      -webkit-text-stroke: 1px var(--orange-light);
+      letter-spacing: .05em;
+      opacity: .7;
+    }
+
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1rem, 3vw, 1.6rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      text-align: center;
+      max-width: 620px;
+      line-height: 1.5;
+      margin-top: 1.5rem;
+      animation: fade-up 1s .2s ease both;
+    }
+
+    .hero-title strong {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--orange-light);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: rgba(255,255,255,.4);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      animation: fade-up 1s .6s ease both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(232,97,10,.8), transparent);
+      animation: scroll-line 2s ease-in-out infinite;
+    }
+
+    @keyframes scroll-line {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50%       { transform: scaleY(.5); opacity: .4; }
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── ORANGE STRIPE ── */
+    .stripe {
+      background: var(--orange);
+      color: #fff;
+      padding: 1.2rem 2rem;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .stripe-inner {
+      display: inline-flex;
+      gap: 3rem;
+      animation: marquee 18s linear infinite;
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .stripe-inner span::before { content: "◆ "; opacity: .5; }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-block;
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--dark);
+    }
+
+    /* ── HISTORY SECTION ── */
+    .history {
+      background: var(--cream);
+    }
+
+    .history-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+
+    .year-callout {
+      position: relative;
+    }
+
+    .year-big {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(6rem, 15vw, 11rem);
+      font-weight: 900;
+      color: var(--orange-pale);
+      line-height: 1;
+      -webkit-text-stroke: 2px var(--orange);
+      position: relative;
+    }
+
+    .year-big::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--orange);
+      margin-top: 1rem;
+      border-radius: 2px;
+    }
+
+    .year-caption {
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--mid);
+    }
+
+    .history-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--mid);
+      margin-bottom: 1.2rem;
+    }
+
+    .highlight-box {
+      background: var(--orange);
+      color: #fff;
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+      font-size: .95rem;
+      line-height: 1.7;
+    }
+
+    .highlight-box strong { display: block; font-size: 1.1rem; margin-bottom: .4rem; }
+
+    /* ── STATS ── */
+    .stats {
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .stats h2 { color: #fff; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(232,97,10,.2);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s, border-color .3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--orange);
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--accent));
+    }
+
+    .stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--orange-light);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: .85rem;
+      color: rgba(255,255,255,.6);
+      margin-top: .5rem;
+      line-height: 1.5;
+    }
+
+    /* ── WHAT IS ── */
+    .what {
+      background: var(--orange-pale);
+    }
+
+    .what-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .what-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      border-left: 4px solid var(--orange);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .what-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(232,97,10,.12);
+    }
+
+    .what-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--orange);
+      margin-bottom: .8rem;
+    }
+
+    .what-card p {
+      font-size: .95rem;
+      line-height: 1.7;
+      color: var(--mid);
+    }
+
+    /* ── LAW ── */
+    .law {
+      background: var(--cream);
+    }
+
+    .law-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 4rem;
+    }
+
+    .law-num {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .law-num + p {
+      font-size: .9rem;
+      color: var(--mid);
+      line-height: 1.6;
+      margin-top: .5rem;
+    }
+
+    .law-points { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .law-points li {
+      display: flex;
+      gap: 1rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--mid);
+    }
+
+    .law-points li::before {
+      content: '→';
+      color: var(--orange);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: .05rem;
+    }
+
+    /* ── ACTION ── */
+    .action {
+      background: var(--orange);
+      color: #fff;
+      text-align: center;
+    }
+
+    .action h2 { color: #fff; }
+
+    .action p {
+      font-size: 1.1rem;
+      max-width: 560px;
+      margin: 1.5rem auto 0;
+      line-height: 1.7;
+      opacity: .9;
+    }
+
+    .action-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+      text-align: left;
+    }
+
+    .action-card {
+      background: rgba(0,0,0,.15);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,.2);
+      transition: background .25s;
+    }
+
+    .action-card:hover { background: rgba(0,0,0,.25); }
+
+    .action-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .action-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: .6rem;
+    }
+
+    .action-card p {
+      font-size: .9rem;
+      opacity: .85;
+      margin: 0;
+    }
+
+    /* ── DISQUE 100 ── */
+    .hotline {
+      background: var(--dark);
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .hotline h2 { color: #fff; margin-bottom: .5rem; }
+
+    .hotline-num {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(5rem, 16vw, 10rem);
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+
+    .hotline p {
+      color: rgba(255,255,255,.6);
+      font-size: 1rem;
+      margin-top: .8rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .hotline-pill {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .4rem 1.2rem;
+      border-radius: 100px;
+      margin-top: 1.2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 2rem;
+      text-align: center;
+      color: rgba(255,255,255,.3);
+      font-size: .8rem;
+      letter-spacing: .04em;
+    }
+
+    footer strong { color: var(--orange); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .history-grid,
+      .law-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .stats-grid,
+      .action-cards { grid-template-columns: 1fr; }
+      .what-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-rings">
+      <div class="ring"></div><div class="ring"></div>
+      <div class="ring"></div><div class="ring"></div>
+      <div class="ring"></div><div class="ring"></div>
+    </div>
+    <p class="hero-badge">Maio Laranja · Brasil</p>
+    <h1 class="hero-date">
+      18<span>de Maio</span>
+    </h1>
+    <p class="hero-title">
+      Dia Nacional de Combate ao <strong>Abuso e à Exploração Sexual</strong>
+      de Crianças e Adolescentes
+    </p>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      role
+    </div>
+  </section>
+
+  <!-- STRIPE -->
+  <div class="stripe">
+    <div class="stripe-inner">
+      <span>Denuncie</span><span>Disque 100</span><span>Proteja</span>
+      <span>Faça Bonito</span><span>Maio Laranja</span><span>Não se cale</span>
+      <span>Seja a voz</span><span>Proteja nossas crianças</span>
+      <!-- duplicate for seamless loop -->
+      <span>Denuncie</span><span>Disque 100</span><span>Proteja</span>
+      <span>Faça Bonito</span><span>Maio Laranja</span><span>Não se cale</span>
+      <span>Seja a voz</span><span>Proteja nossas crianças</span>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <section class="history">
+    <div class="container">
+      <span class="section-label">A história por trás da data</span>
+      <h2>Uma data marcada<br>pela dor — e pela luta.</h2>
+      <div class="history-grid">
+        <div class="year-callout">
+          <div class="year-big">1973</div>
+          <p class="year-caption">
+            Em 18 de maio de 1973, a menina <strong>Araceli Cabrera Crespo</strong>, de apenas 8 anos,
+            desapareceu em Vitória (ES). Seu corpo foi encontrado dias depois,
+            com evidências de violência brutal.
+          </p>
+          <div class="highlight-box">
+            <strong>A Lei nº 9.970/2000</strong>
+            Instituiu oficialmente o 18 de maio como Dia Nacional de Combate ao
+            Abuso e à Exploração Sexual de Crianças e Adolescentes, em memória de Araceli
+            e de todas as crianças vítimas dessa violência.
+          </div>
+        </div>
+        <div class="history-text">
+          <p>
+            O caso Araceli chocou o Brasil e jamais foi devidamente punido. A impunidade
+            escancarou a fragilidade do sistema de proteção à infância e inflamou
+            movimentos sociais em todo o país.
+          </p>
+          <p>
+            Décadas de mobilização da sociedade civil resultaram na criação desta data
+            simbólica, que hoje integra o <strong>Maio Laranja</strong> — mês inteiro dedicado
+            a campanhas de conscientização e prevenção.
+          </p>
+          <p>
+            Em 2026, celebramos 26 anos de mobilização nacional. Ainda há muito a fazer:
+            o Brasil ocupa o 2º lugar no ranking mundial de exploração sexual
+            de crianças e adolescentes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container">
+      <span class="section-label" style="color: var(--orange-light);">Números que não podem ser ignorados</span>
+      <h2>A realidade<br>em dados.</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num">8</div>
+          <div class="stat-label">
+            crianças e adolescentes são vítimas de violência sexual <strong>a cada hora</strong> no Brasil
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">85%</div>
+          <div class="stat-label">
+            dos agressores eram <strong>conhecidos da vítima</strong> — familiares, vizinhos ou responsáveis
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2º</div>
+          <div class="stat-label">
+            lugar que o Brasil ocupa no ranking mundial de <strong>exploração sexual infantil</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS -->
+  <section class="what">
+    <div class="container">
+      <span class="section-label">Entenda a diferença</span>
+      <h2>Abuso e exploração:<br>violações distintas.</h2>
+      <div class="what-grid">
+        <div class="what-card">
+          <h3>Abuso Sexual</h3>
+          <p>
+            É qualquer ato de natureza sexual praticado contra uma criança ou adolescente
+            sem o seu consentimento ou compreensão. Inclui contato físico e atos sem contato,
+            como exposição a material pornográfico.
+          </p>
+        </div>
+        <div class="what-card">
+          <h3>Exploração Sexual</h3>
+          <p>
+            Caracteriza-se pela utilização sexual de crianças e adolescentes com finalidade
+            de lucro — dinheiro, favores ou presentes. É considerada uma das piores formas
+            de trabalho infantil.
+          </p>
+        </div>
+        <div class="what-card">
+          <h3>Sinais de Alerta</h3>
+          <p>
+            Mudanças repentinas de comportamento, medo de adultos específicos, regressão
+            de comportamento, marcas no corpo ou conhecimento sexual inadequado para a idade
+            podem ser sinais de abuso.
+          </p>
+        </div>
+        <div class="what-card">
+          <h3>O Silêncio Também é Violência</h3>
+          <p>
+            A omissão diante de uma suspeita perpetua o ciclo de violência. Denunciar
+            é um ato de proteção. A sociedade inteira é responsável por garantir
+            um desenvolvimento seguro a cada criança.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAW -->
+  <section class="law">
+    <div class="container">
+      <span class="section-label">Marco legal</span>
+      <h2>O que a lei garante<br>às nossas crianças.</h2>
+      <div class="law-inner">
+        <div>
+          <div class="law-num">Lei nº 9.970/2000</div>
+          <p>Institui o Dia Nacional de Combate ao Abuso e à Exploração Sexual de Crianças e Adolescentes.</p>
+          <br>
+          <div class="law-num">ECA — Lei nº 8.069/1990</div>
+          <p>O Estatuto da Criança e do Adolescente garante proteção integral a toda criança brasileira.</p>
+        </div>
+        <ul class="law-points">
+          <li>Toda criança tem direito à dignidade, respeito, liberdade e convivência familiar e comunitária.</li>
+          <li>A violência sexual contra crianças e adolescentes é crime hediondo, previsto no Código Penal.</li>
+          <li>O Estado, a família e a sociedade têm responsabilidade solidária na proteção da infância.</li>
+          <li>A denúncia pode ser feita de forma anônima pelo Disque 100, sem risco algum ao denunciante.</li>
+          <li>Profissionais de saúde e educação são obrigados por lei a notificar casos suspeitos.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTION -->
+  <section class="action">
+    <div class="container">
+      <span class="section-label" style="color: rgba(255,255,255,.7);">O que você pode fazer</span>
+      <h2>Cada pessoa<br>faz a diferença.</h2>
+      <p>Proteger crianças não é só tarefa do Estado. É um compromisso de toda a sociedade.</p>
+      <div class="action-cards">
+        <div class="action-card">
+          <span class="action-icon">👀</span>
+          <h3>Fique Atento</h3>
+          <p>Observe comportamentos de crianças ao redor. Sinais de medo, isolamento ou mudanças repentinas merecem atenção.</p>
+        </div>
+        <div class="action-card">
+          <span class="action-icon">📢</span>
+          <h3>Denuncie</h3>
+          <p>Suspeita de abuso? Ligue imediatamente para o <strong>Disque 100</strong>. A ligação é gratuita, sigilosa e funciona 24h.</p>
+        </div>
+        <div class="action-card">
+          <span class="action-icon">🎓</span>
+          <h3>Eduque</h3>
+          <p>Converse com crianças sobre limites corporais, segurança e a quem recorrer. Informação é a melhor prevenção.</p>
+        </div>
+        <div class="action-card">
+          <span class="action-icon">🗣️</span>
+          <h3>Quebre o Silêncio</h3>
+          <p>Compartilhe informação. Fale sobre o tema em casa, na escola, no trabalho. Visibilidade salva vidas.</p>
+        </div>
+        <div class="action-card">
+          <span class="action-icon">🤝</span>
+          <h3>Apoie as Vítimas</h3>
+          <p>Acolha sem julgamento. Crianças que sofrem abusos precisam de suporte emocional e encaminhamento especializado.</p>
+        </div>
+        <div class="action-card">
+          <span class="action-icon">🔶</span>
+          <h3>Vista Laranja</h3>
+          <p>Em maio, usar a cor laranja é símbolo de compromisso com a proteção das crianças e adolescentes brasileiros.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOTLINE -->
+  <section class="hotline">
+    <div class="container">
+      <h2 style="font-family:'Fraunces',serif; color:#fff; font-size:clamp(1.2rem,3vw,1.8rem); font-weight:300; margin-bottom:.5rem;">
+        Para denunciar, ligue agora:
+      </h2>
+      <div class="hotline-num">100</div>
+      <p>
+        O Disque 100 é gratuito, funciona 24 horas por dia, 7 dias por semana,
+        inclusive feriados. Você pode denunciar de forma anônima.
+      </p>
+      <span class="hotline-pill">Gratuito · Sigiloso · Disponível 24h</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <strong>18 de Maio</strong> — Dia Nacional de Combate ao Abuso e à Exploração Sexual
+      de Crianças e Adolescentes · <strong>Maio Laranja</strong>
+    </p>
+    <p style="margin-top:.5rem; opacity:.6;">Lei Federal nº 9.970/2000 · Em memória de Araceli</p>
+  </footer>
+
+</body>
+</html>
